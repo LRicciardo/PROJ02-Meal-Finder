@@ -1,0 +1,24 @@
+<section class="card">
+  <!-- The contents of this card links to the project page using the project ID -->
+  <a href="/project/{{id}}">
+    <!-- The card contains the project name as the card header -->
+    <header>{{name}}</header>
+    <!-- The card contains the first project -->
+    <p>description: 
+      <span>{{project.description}} 
+      </span> 
+    </p>
+    <p>date created: 
+      <span>{{project.date_created}} 
+      </span> 
+    </p>
+    <p>funding needed: 
+      <span>{{project.needed_funding}} 
+      </span> 
+    </p>
+    <p>user: 
+      <span>{{project.user_id}} 
+      </span> 
+    </p>
+  </a>
+</section>
