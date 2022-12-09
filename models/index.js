@@ -1,4 +1,5 @@
 const User = require('./User');
+
 const Recipe = require('./Recipe');
 
 User.hasMany(Recipes, {
