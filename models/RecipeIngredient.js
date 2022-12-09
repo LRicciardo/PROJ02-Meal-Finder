@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const { RecipeIngredient } = require('.');
 const sequelize = require('../config/connection');
 
 class Recipe extends Model { }
@@ -32,7 +33,7 @@ Recipe.init(
             }
         },
         unit_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             uniqueFlag: false,
             references: {
@@ -42,16 +43,15 @@ Recipe.init(
             }
         },
         measurement: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.STRING,
             allowNull: false,
         }
     },
 
     {
         sequelize,
-
-        modelName: 'project',
+        modelName: 'recipeingredient',
     }
 );
 
-module.exports = Project;
+module.exports = RecipeIngredient;
