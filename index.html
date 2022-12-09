@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">    
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+    <link rel="stylesheet" href="public\css\style.css"/>
+    <title>MealMaker</title>
+</head>
+
+<body>
+    <header>
+    <h1></h1>
+    </header>
+    <main class="columns is-centered">
+        <div class="column is-one-quarter-tablet">
+            <div class="box is-fluid">
+                <form id="user-form" class="user-form">
+                    <div class="field">
+                        <label class="meal">What kind of meal would you like?</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Ex: Apple Crumble, Cheese, Pasta, etc..." id="search-input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <br>
+                            Diet Options:
+                            <br>
+                            <label class="radio pl-3">
+                                <input type="radio" name="diet" id="veggie-option">
+                                Vegetarian
+                            </label>
+                            <br>
+                            <label class="radio pl-3">
+                                <input type="radio" name="diet" id="vegan-option">
+                                Vegan
+                            </label>
+                            <br>
+                            <label class="radio pl-3">
+                                <input type="radio" name="diet" id="gluten-free-option">
+                                Gluten-free
+                            </label>
+                            <br>
+                            <label class="radio pl-3">
+                                <input type="radio" name="diet" id="no-diet">
+                                No Restrictions
+                            </label>
+                            <br>
+                            <button class="button submit is-fullwidth is-responsive" id="form-submit">Submit</button>
+                        </div>
+                </form>
+                </div>
+            </div>
+
+            <div class="favorites-section is-block fav-recipe-box box is-light is-fluid">
+                <section class="favorites" id="favorites-section">
+                    <div>
+                        <h1 class="fav-recipe-header"  id="fav">Favorite Recipes</h1>
+                    </div>
+
+                    <div class="fav-recipe-card"></div>
+                </section>
+            </div>
+        </div>
+        <section class="column is-three-quarters-tablet" id="cards">
+        </section>  
+    </main>
+    <section id="drink-section" class="hidden">
+            <div id="drink-info" class="drink-section columns is-three-quarters-tablet">
+                <div class="column" id="drink"></div>
+                <div class="column" id="ingredients"></div>
+                <div class="column" id="instructions"></div>
+        </div>
+    </section>
+
+    <div class="modal" id="input-error-modal">
+        <div class="modal-background" id="input-modal-bg"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="input-modal-close-btn"></button>
+          </header>
+          <section class="modal-card-body">
+            <p>
+                Please enter search criteria.
+            </p>
+          </section>
+        </div>
+    </div>
+
+    <div class="modal" id="input-no-recipes-modal">
+        <div class="modal-background" id="input-modal-bg"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="input-modal-close-btn-2"></button>
+          </header>
+          <section class="modal-card-body">
+            <p>
+                We couldn't find any recipes for that. Try to search for something that is similar to what you were looking for.
+            </p>
+          </section>
+        </div>
+    </div>
+
+    <div class="modal" id="data-not-found-modal">
+        <div class="modal-background" id="data-modal-bg"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="data-modal-close-btn"></button>
+          </header>
+          <section class="modal-card-body">
+            <p>
+                Data not found!
+            </p>
+          </section>
+        </div>
+    </div>
+
+    <div class="modal" id="cannot-connect-modal">
+        <div class="modal-background" id="cannot-connect-bg"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="cannot-connect-close-btn"></button>
+          </header>
+          <section class="modal-card-body">
+            <p>
+                Data not found!
+            </p>
+          </section>
+        </div>
+    </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+    <script src="public\js\script.js"></script>
+</body>
+</html>
