@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const { RecipeIngredient } = require('.');
 const sequelize = require('../config/connection');
 
-class Recipe extends Model { }
+class RecipeIngredient extends Model { }
 
-Recipe.init(
+RecipeIngredient.init(
     {
         id: {
             type: DataTypes.INTEGER,
