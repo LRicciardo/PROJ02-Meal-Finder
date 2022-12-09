@@ -10,7 +10,6 @@ router.get('/', withAuth, async (req, res) => {
       include: [
         {
           model: users,
-          
         }
       ]
       attributes: { exclude: ['password'] },
