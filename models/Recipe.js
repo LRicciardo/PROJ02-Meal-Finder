@@ -5,7 +5,7 @@ class Recipe extends Model {}
 
 Recipe.init(
   {
-    id: {
+    api_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -15,33 +15,34 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    instructions: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
+    image: {
+      type: DataTypes.STRING,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    needed_funding: {
-      type: DataTypes.FLOAT,
+    source_url: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
+    servings: {
+      type: DataTypes.STRING,
       references: {
         model: 'user',
         key: 'id',
+      },
+      ready_time: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
   },
   {
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'project',
+    modelName: 'recipe'
   }
 );
 
-module.exports = Project;
+module.exports = Recipe;
