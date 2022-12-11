@@ -4,6 +4,7 @@
   font-weight: bold;
 }
 html {
+  background-color: rgb(201, 230, 121);
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -16,14 +17,6 @@ header {
   align-content: center;
   font-size: 50px;
   text-align: center;
-}
-
-header h1 {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 25px;
-  display: inline-block;
-  font-family: "Sacramento", cursive;
-  color: rgba(0, 169, 203, 0.8);
 }
 
 body {
