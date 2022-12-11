@@ -1,8 +1,6 @@
 var userInput = $("#user-form");
 var submitButton = $("#form-submit");
 var cardContainerEl = $("#cards");
-var drinkContainerEl = $("#drink");
-var drinkInfoContainerEl = $("#drink-info");
 var favButton = $(".favorite");
 var favSection = $("#favorites-section");
 var favArray = [];
@@ -203,122 +201,95 @@ var displayRecipeCards = function (data) {
     // create the more info button on each recipe card
     cardFavoriteButton = $("<button></button>");
     cardFavoriteButton.attr("class", "favorite card-footer-item button");
-    cardFavoriteButton.text("Favorite");
+    cardFavoriteButton.text("SAVE");
     cardButtonEl.append(cardFavoriteButton);
   }
+};
 
-  $(document).ready(function () {
-    $(".button").click(function () {
-      $(".submit").effect(
-        "pulsate",
-        {
-          times: 3,
-          distance: 10,
-        },
-        3000
-      );
-    });
+$(document).ready(function () {
+  $(".button").click(function () {
+    $(".submit").effect(
+      "pulsate",
+      {
+        times: 3,
+        distance: 10,
+      },
+      3000
+    );
+  });
+});
+
+//uses array of options to provide autocomplete options
+$(function () {
+  var dataSrc = [
+    "apples",
+    "avacado",
+    "almond",
+    "bacon",
+    "bagel",
+    "broccoli",
+    "cabbage",
+    "chicken",
+    "cookies",
+    "duck",
+    "donuts",
+    "dumplings",
+    "eggs",
+    "eel",
+    "enchilada",
+    "fish",
+    "fajita",
+    "franks",
+    "garlic",
+    "gumbo",
+    "grits",
+    "ham",
+    "hash browns",
+    "hot dogs",
+    "ice cream",
+    "indian food",
+    "irish stew",
+    "jambalaya",
+    "jelly",
+    "jalapeno",
+    "kale",
+    "kiwi",
+    "kidney beans",
+    "lobster",
+    "lamb",
+    "lasagna",
+    "meatballs",
+    "milk",
+    "noodles",
+    "pizza",
+    "pancakes",
+    "pepperoni",
+    "quesadilla",
+    "spinach",
+    "toast",
+    "venison",
+    "waffles",
+    "walnuts",
+    "yogurt",
+    "ziti",
+  ];
+
+  $("#search-input").autocomplete({
+    source: dataSrc,
   });
 
-  //uses array of options to provide autocomplete options
-  $(function () {
-    var dataSrc = [
-      "apples",
-      "avacado",
-      "almond",
-      "bacon",
-      "bagel",
-      "broccoli",
-      "cabbage",
-      "chicken",
-      "cookies",
-      "duck",
-      "donuts",
-      "dumplings",
-      "eggs",
-      "eel",
-      "enchilada",
-      "fish",
-      "fajita",
-      "franks",
-      "garlic",
-      "gumbo",
-      "grits",
-      "ham",
-      "hash browns",
-      "hot dogs",
-      "ice cream",
-      "indian food",
-      "irish stew",
-      "jambalaya",
-      "jelly",
-      "jalapeno",
-      "kale",
-      "kiwi",
-      "kidney beans",
-      "lobster",
-      "lamb",
-      "lasagna",
-      "meatballs",
-      "milk",
-      "noodles",
-      "pizza",
-      "pancakes",
-      "pepperoni",
-      "quesadilla",
-      "spinach",
-      "toast",
-      "venison",
-      "waffles",
-      "walnuts",
-      "yogurt",
-      "ziti",
-    ];
-
-    $("#search-input").autocomplete({
-      source: dataSrc,
+  // Lines 307 - 312 came from https://miroslavpopovic.com/posts/2012/06/jqueryui-autocomplete-filter-words-starting-with-term
+  $.ui.autocomplete.filter = function (array, term) {
+    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+    return $.grep(array, function (value) {
+      return matcher.test(value.label || value.value || value);
     });
-
-    // Lines 307 - 312 came from https://miroslavpopovic.com/posts/2012/06/jqueryui-autocomplete-filter-words-starting-with-term
-    $.ui.autocomplete.filter = function (array, term) {
-      var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-      return $.grep(array, function (value) {
-        return matcher.test(value.label || value.value || value);
-      });
-    };
-  });
-
-  var updateCardText = function (idCallResponse) {
-    currentCard = $("cards").find($);
-    cardContentEl.text(idCallResponse.readyInMinutes);
   };
+});
 
-  // If the ingredient value in the data has a value then create a list element for that unique ingredient
-  var instructionsEl = $("#instructions");
-  instructionsEl.empty();
-  instructionsEl.attr("class", "column instructions-column");
-  drinkContainerEl.append(instructionsEl);
-
-  // Set Ingredients Column
-  instructionsTitleEl = $("<div></div>");
-  instructionsTitleEl.attr("class", "instructions-titleEl");
-  instructionsEl.append(instructionsTitleEl);
-
-  instructionsTitleText = $("<h1></h1>");
-  instructionsTitleText.attr("class", "instructions-title");
-  instructionsTitleText.text("INSTRUCTIONS:");
-  instructionsTitleEl.append(instructionsTitleText);
-
-  instructionsSummaryEl = $("<p></p>");
-  instructionsSummaryEl.attr("class", "instructions-summary");
-  instructionsSummaryEl.text(data.drinks[0].strInstructions);
-  instructionsEl.append(instructionsSummaryEl);
-
-  // Getter
-  // var themeClass = $( ".drink-column" ).tooltip( "option", "classes.ui-tooltip" );
-
-  // Setter
-  // $( ".drink-column" ).tooltip( "option", "classes.ui-tooltip", "content", "highlight" );
+var updateCardText = function (idCallResponse) {
+  currentCard = $("cards").find($);
+  cardContentEl.text(idCallResponse.readyInMinutes);
 };
 
 var favButton = function (event) {
@@ -343,6 +314,41 @@ var favButton = function (event) {
   }
 };
 
+var createFavRecipeButton = function (storedRecipe) {
+  newAnchor = $("<a>");
+  newAnchor.attr("href", storedRecipe.url);
+  newAnchor.attr("target", "_blank");
+
+  newButton = $("<button></button>");
+  newButton.attr(
+    "class",
+    "button is-fullwidth is-responsive my-2 saved-fav mx-auto"
+  );
+  newButton.text(storedRecipe.title);
+  newAnchor.append(newButton);
+
+  favSection.append(newAnchor);
+};
+
+  for (i = 0; i < favArray.length; i++) {
+    newAnchor = $("<a>");
+    newAnchor.attr("href", savedFavRecipes[i].url);
+    newAnchor.attr("target", "_blank");
+
+    newButton = $("<button></button>");
+    newButton.attr(
+      "class",
+      "button is-fullwidth is-responsive my-2 saved-fav mx-auto"
+    );
+    newButton.text(savedFavRecipes[i].title);
+    newAnchor.append(newButton);
+
+    favSection.append(newAnchor);
+  }
+
+var saveRecipes = function () {
+  localStorage.setItem("recipes", JSON.stringify(favArray));
+};
 var closeInputModal = function () {
   inputErrorModalEl.classList.remove("is-active");
 };
@@ -385,4 +391,3 @@ document
 
 $("#form-submit").on("click", getSpoonApi);
 $(favButton).on("click", favButton);
-loadFavRecipes();
