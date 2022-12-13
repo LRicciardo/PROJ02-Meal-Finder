@@ -1,0 +1,50 @@
+[
+  {
+    "name": "milliliter(s)",
+    "name_short": "ml"
+  },
+  {
+    "name": "gram(s)",
+    "name_short": "g"
+  },
+  {
+    "name": "pound(s)",
+    "name_short": "lbs"
+  },
+  {
+    "name": "tablespoon(s)",
+    "name_short": "Tbsps"
+  },
+  {
+    "name": "small",
+    "name_short": "sm"
+  },
+  {
+    "name": "teaspoon(s)",
+    "name_short": "tsps"
+  },
+  {
+    "name": "cup(s)",
+    "name_short": "c"
+  },
+  {
+    "name": "ounce(s)",
+    "name_short": "oz"
+  },
+  {
+    "name": "stick(s)",
+    "name_short": "sticks"
+  },
+  {
+    "name": " ",
+    "name_short": " "
+  },
+  {
+    "name": "large",
+    "name_short": "lrg"
+  },
+  {
+    "name": "medium",
+    "name_short": "med"
+  }
+]

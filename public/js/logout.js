@@ -1,5 +1,4 @@
 const logout = async () => {
-  // TODO: Add a comment describing the functionality of this expression
   //  logs user out
   const response = await fetch('/api/users/logout', {
     method: 'POST',
@@ -7,7 +6,6 @@ const logout = async () => {
   });
 
   if (response.ok) {
-    // TODO: Add a comment describing the functionality of this statement
     // only allow to login page
     document.location.replace('/login');
   } else {

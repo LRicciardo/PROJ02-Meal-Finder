@@ -12,7 +12,12 @@ Unit.init(
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(15),
+      allowNull: false,
+      validate:{notNull:true, notEmpty:false}
+    },
+    name_short: {
+      type: DataTypes.STRING(5),
       allowNull: false,
       validate:{notNull:true, notEmpty:false}
     },
