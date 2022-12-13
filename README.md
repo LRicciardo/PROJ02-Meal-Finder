@@ -91,7 +91,7 @@ The following video shows the application being used from the command line:
 
 The following is a visual representation of the mealplanner_db database schema.
 
-![database schema](./assets/images/MOD12-C-EMPLOYEE-TRACKER.png)
+![database schema](./assets/images/PROJ02-Meal-Finder.png)
 
 ## Installation
 

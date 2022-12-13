@@ -72,5 +72,5 @@ app.use(routes);
 // (Table not DROPped existing table will be deleted)
 sequelize.sync({ force: false }).then(() => {
   // express() App listening on the below port
-  app.listen(PORT, () => console.log(`Now listening on ${PORT} `));
+  app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT} `));
 });

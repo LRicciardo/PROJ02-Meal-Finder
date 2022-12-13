@@ -1,0 +1,194 @@
+[
+  {
+    "recipe_id": 1,
+    "ingredient_id": 30,
+    "unit_id": 4,
+    "measurement": 3.5
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 29,
+    "unit_id": 7,
+    "measurement": 0.25
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 23,
+    "unit_id": 7,
+    "measurement": 0.5
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 24,
+    "unit_id": 8,
+    "measurement": 8
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 25,
+    "unit_id": 9,
+    "measurement": 2
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 26,
+    "unit_id": 8,
+    "measurement": 16
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 28,
+    "unit_id": 7,
+    "measurement": 0.25
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 27,
+    "unit_id": 7,
+    "measurement": 1
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 19,
+    "unit_id": 4,
+    "measurement": 3
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 20,
+    "unit_id": 6,
+    "measurement": 0.25
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 21,
+    "unit_id": 4,
+    "measurement": 3
+  },
+  {
+    "recipe_id": 1,
+    "ingredient_id": 22,
+    "unit_id":7 ,
+    "measurement": 0.75
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 7,
+    "unit_id": 3,
+    "measurement": 1.5
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 8,
+    "unit_id": 7,
+    "measurement": 1
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 9,
+    "unit_id": 7,
+    "measurement": 0.5
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 10,
+    "unit_id": 7,
+    "measurement": 0.75
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 11,
+    "unit_id": 10 ,
+    "measurement": 2
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 12,
+    "unit_id": 6,
+    "measurement": 1.5
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 13,
+    "unit_id": 6,
+    "measurement": 1
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 14,
+    "unit_id": 6,
+    "measurement": 0.5
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 15,
+    "unit_id": 10,
+    "measurement": 1
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 31,
+    "unit_id": 10,
+    "measurement": 0.5 
+  },
+  {
+    "recipe_id": 2,
+    "ingredient_id": 16,
+    "unit_id": 6,
+    "measurement": 0.75
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 17,
+    "unit_id": 6,
+    "measurement": 1
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 18,
+    "unit_id": 12,
+    "measurement": 2
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 11,
+    "unit_id": 11,
+    "measurement": 2
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 5,
+    "unit_id": 6,
+    "measurement": 2
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 6,
+    "unit_id": 6,
+    "measurement": 2
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 4,
+    "unit_id": 7,
+    "measurement": 1
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 3,
+    "unit_id": 7,
+    "measurement": 2
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 2,
+    "unit_id": 8,
+    "measurement": 25
+  },
+  {
+    "recipe_id": 3,
+    "ingredient_id": 1,
+    "unit_id": 4,
+    "measurement": 4
+  }
+]
