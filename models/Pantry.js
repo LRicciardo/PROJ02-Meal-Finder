@@ -12,8 +12,9 @@ Pantry.init(
             autoIncrement: true,
         },
         ingredient: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(45),
             allowNull: false,
+            validate: {notNull: true}
         },
     },
     {

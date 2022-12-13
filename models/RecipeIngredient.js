@@ -33,7 +33,7 @@ RecipeIngredient.init(
             }
         },
         unit_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             uniqueFlag: false,
             references: {
@@ -42,9 +42,10 @@ RecipeIngredient.init(
                 unique: false
             }
         },
-        measurement: {
-            type: DataTypes.STRING,
+        amount: {
+            type: DataTypes.INTEGER(4,3),
             allowNull: false,
+            validate:{isDecimal:true}
         }
     },
 
