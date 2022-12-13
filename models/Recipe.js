@@ -21,6 +21,7 @@ Recipe.init(
     },
     instructions: {
       type: DataTypes.STRING(2000),
+      allowNull: false,
       validate: { notNull: true }
     },
     image: {
@@ -40,7 +41,6 @@ Recipe.init(
     ready_time: {
       type: DataTypes.INTEGER(4),
       allowNull: false,
-      validate: { isInt: true },
     },
   },
 
