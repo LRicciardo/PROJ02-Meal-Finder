@@ -1,0 +1,124 @@
+    {{!-- <main class="container container-fluid mt-5">  </main> --}}
+  <main class="columns is-centered">
+        <div class="column is-one-quarter-tablet">
+            <div class="box is-fluid">
+                <form id="user-form" class="user-form">
+                    <div class="field">
+                        <label class="meal">What kind of meal would you like?</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Ex: Apple Crumble, Cheese, Pasta, etc..." id="search-input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <br>
+                            Diet Options:
+                            <br>
+                            <label class="radio pl-3">
+                                <input type="radio" name="diet" id="veggie-option">
+                                Vegetarian
+                            </label>
+                            <br>
+                            <label class="radio pl-3">
+                                <input type="radio" name="diet" id="vegan-option">
+                                Vegan
+                            </label>
+                            <br>
+                            <label class="radio pl-3">
+                                <input type="radio" name="diet" id="gluten-free-option">
+                                Gluten-free
+                            </label>
+                            <br>
+                            <label class="radio pl-3">
+                                <input type="radio" name="diet" id="no-diet">
+                                No Restrictions
+                            </label>
+                            <br>
+                            <button class="button submit is-fullwidth is-responsive" id="form-submit">Submit</button>
+                        </div>
+                </form>
+                </div>
+            </div>
+
+            <div class="favorites-section is-block fav-recipe-box box is-light is-fluid">
+                <section class="favorites" id="favorites-section">
+                    <div>
+                        <h1 class="fav-recipe-header"  id="fav">Saved Recipes</h1>
+                    </div>
+
+                    <div class="fav-recipe-card"></div>
+                </section>
+            </div>
+        </div>
+        <section class="column is-three-quarters-tablet" id="cards">
+        </section>  
+    </main>
+    {{!-- <section id="drink-section" class="hidden">
+            <div id="drink-info" class="drink-section columns is-three-quarters-tablet">
+                <div class="column" id="drink"></div>
+                <div class="column" id="ingredients"></div>
+                <div class="column" id="instructions"></div>
+        </div>
+    </section> --}}
+
+    <div class="modal" id="error-modal">
+        <div class="modal-background" id="error-modal-bg"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="error-modal-close-btn">Close</button>
+          </header>
+          <section class="modal-card-body">
+            <p>
+                Please enter search criteria.
+            </p>
+          </section>
+        </div>
+    </div>
+
+    <div class="modal" id="no-recipes-modal">
+        <div class="modal-background" id="no-recipe-modal-bg"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="no-recipe-modal-close-btn">Close</button>
+          </header>
+          <section class="modal-card-body">
+            <p>
+                We couldn't find any recipes for that. Try to search for something that is similar to what you were looking for.
+            </p>
+          </section>
+        </div>
+    </div>
+
+    <div class="modal" id="data-not-found-modal">
+        <div class="modal-background" id="data-not-found-modal-bg"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="data-not-found-modal-close-btn">Close</button>
+          </header>
+          <section class="modal-card-body">
+            <p>
+                Data not found!
+            </p>
+          </section>
+        </div>
+    </div>
+
+    <div class="modal" id="cannot-connect-modal">
+        <div class="modal-background" id="cannot-connect-modal-bg"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="cannot-connect-modal-close-btn">Close</button>
+          </header>
+          <section class="modal-card-body">
+            <p>
+                Data not found!
+            </p>
+          </section>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>

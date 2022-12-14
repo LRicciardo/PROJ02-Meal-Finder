@@ -4,33 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Funding Projects</title>
-  <link rel="stylesheet" href="/css/jass.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+    <link rel="stylesheet" href="/css/style.css"/>
+  <title>Recipe Finder</title>
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      Funding Project
-    </h1>
+  {{!-- <header class="display-flex justify-space-between align-center p-2"> --}}
+    {{!-- <h1> --}}
+      {{!-- Recipe Finder --}}
+    {{!-- </h1> --}}
     {{!-- builtin helper if logged in show logout button --}}
-    {{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout">logout</button>
-    </nav>
-    {{/if}}
-  </header>
-  <main class="container container-fluid mt-5">
-    {{{ body }}}
-  </main>
-  <footer>
+    {{!-- {{#if logged_in}} --}}
+    {{!-- <nav> --}}
+      {{!-- <button class="btn" id="logout">logout</button> --}}
+    {{!-- </nav> --}}
+    {{!-- {{/if}} --}}
+  {{!-- </header> --}}
+  {{> header }}
+ 
+  {{{ body }}}
+
+  {{!-- <footer>
       
-  </footer>
+  </footer> --}}
+   {{> footer }}
 
   {{!--  --}}
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+    {{!-- <script src="public\js\script.js"></script> --}}
+    <script src="/js/script.js"></script>
 </body>
 
 </html>

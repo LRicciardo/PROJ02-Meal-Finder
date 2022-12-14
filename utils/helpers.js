@@ -9,6 +9,6 @@ module.exports = {
       book = "📙";
     }
 
-    return `<span for="img" aria-label="book">${book}</span>`;
+    return `<span for="img" aria-label="favorite">${favorite}</span>`;
   },
 };

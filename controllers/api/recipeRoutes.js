@@ -1,5 +1,39 @@
 const router = require('express').Router();
-const { Recipe, Unit, RecipeIngredient, Pantry } = require('../../models');
+const { Recipe, Unit, RecipeIngredient, Pantry, User } = require('../../models');
+
+// ENDPOINT : http://localhost:3001/api/recipe/
+router.get('/', async (req, res) => {
+  try {
+    const recipeBoxData = await Recipe.findAll({
+      include: [ User ],
+      where: { 
+        user_id: req.session.user_id,
+      }
+    });
+
+    res.status(200).json(recipeBoxData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// SELECT 
+// recipe.api_id, recipe.image, recipe.name 
+
+router.get('/:id', async (req, res) => {
+  try {
+    const recipeBoxData = await Recipe.findbyPK({
+      include: [ Unit, RecipeIngredient, Pantry ]
+      // where: { 
+      //   user_id: req.session.user_id,
+      // }
+    });
+
+    res.status(200).json(recipeBoxData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
