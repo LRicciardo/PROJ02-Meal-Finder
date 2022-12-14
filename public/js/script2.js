@@ -6,6 +6,10 @@ var favButton = $(".favorite");
 var favSection = $("#favorites-section");
 var favArray = [];
 
+const inputErrorModalEl = document.getElementById("input-error-modal");
+const inputNoRecipesModalEl = document.getElementById("input-no-recipes-modal");
+const dataNotFoundModalEl = document.getElementById("data-not-found-modal");
+const cannotConnectModalEl = document.getElementById("cannot-connect-modal");
 let currentSearch = "";
 
 // An array of different apiKeys that will work in the fetch api call in the getSpoonApi function
@@ -77,7 +81,7 @@ var getSpoonApi = function (event) {
       if (response.ok) {
         response.json().then(function (data) {
           if (data.results.length === 0) {
-            $("#no-recipes-modal").addClass("is-active");
+            inputNoRecipesModalEl.classList.add("is-active");
             $("#search-input").val("");
             return;
           }
@@ -85,13 +89,12 @@ var getSpoonApi = function (event) {
           displayRecipeCards(data);
         });
       } else {
-        $("#data-not-found-modal").addClass("is-active");
-
+        dataNotFoundModalEl.classList.add("is-active");
         return;
       }
     })
     .catch(function (error) {
-      $("#cannot-connect-modal").addClass("is-active");
+      cannotConnectModalEl.classList.add("is-active");
       return;
     });
 };
@@ -347,19 +350,45 @@ var createFavRecipeButton = function (storedRecipe) {
 var saveRecipes = function () {
   localStorage.setItem("recipes", JSON.stringify(favArray));
 };
+var closeInputModal = function () {
+  inputErrorModalEl.classList.remove("is-active");
+};
+
+var noData = function () {
+  inputNoRecipesModalEl.classList.remove("is-active");
+};
+
+var closeDataModal = function () {
+  dataNotFoundModalEl.classList.remove("is-active");
+};
+
+var closeApiModal = function () {
+  cannotConnectModalEl.classList.remove("is-active");
+};
+
+document
+  .querySelector("#input-modal-close-btn")
+  .addEventListener("click", closeInputModal);
+document
+  .querySelector("#input-modal-close-btn-2")
+  .addEventListener("click", noData);
+document
+  .querySelector("#input-modal-bg")
+  .addEventListener("click", closeInputModal);
+
+document
+  .querySelector("#data-modal-bg")
+  .addEventListener("click", closeDataModal);
+document
+  .querySelector("#data-modal-close-btn")
+  .addEventListener("click", closeDataModal);
+
+document
+  .querySelector("#cannot-connect-bg")
+  .addEventListener("click", closeApiModal);
+document
+  .querySelector("#cannot-connect-close-btn")
+  .addEventListener("click", closeApiModal);
 
 $("#form-submit").on("click", getSpoonApi);
 $(favButton).on("click", favButton);
-// close modal when the background or button is clicked
-$("#error-modal-bg, #error-modal-close-btn").on("click", function (event) {
-  $("#error-modal").removeClass("is-active");
-});
-$("#no-recipes-modal-bg, #no-recipes-modal-close-btn").on("click", function (event) {
-  $("#no-recipes-modal").removeClass("is-active");
-});
-$("#data-not-found-modal-bg, #data-not-found-modal-close-btn").on("click", function (event) {
-  $("#data-not-found-modal").removeClass("is-active");
-});
-$("#cannot-connect-modal-bg, #cannot-connect-modal-close-btn").on("click", function (event) {
-  $("#cannot-connect-modal").removeClass("is-active");
-});
