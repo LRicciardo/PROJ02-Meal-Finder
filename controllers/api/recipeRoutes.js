@@ -1,14 +1,34 @@
 const router = require('express').Router();
-const { Recipe, Unit, RecipeIngredient, Pantry, User } = require('../../models');
+const {
+  Recipe,
+  Unit,
+  RecipeIngredient,
+  Pantry,
+  User,
+} = require('../../models');
+const axios = require('axios');
+require('dotenv').config();
+
+router.get('/getRecipeData', async (req, res) => {
+  try {
+    const apiData = await axios.get(
+      `https://api.spoonacular.com/recipes/complexSearch?query=${req.query.query}&number=5&addRecipeInformation=true&apiKey=${process.env.API_KEY}`
+    );
+    return res.status(200).json(apiData.data);
+    console.log('data', apiData.data);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
 
 // ENDPOINT : http://localhost:3001/api/recipe/
 router.get('/', async (req, res) => {
   try {
     const recipeBoxData = await Recipe.findAll({
-      include: [ User ],
-      where: { 
+      include: [User],
+      where: {
         user_id: req.session.user_id,
-      }
+      },
     });
 
     res.status(200).json(recipeBoxData);
@@ -17,14 +37,14 @@ router.get('/', async (req, res) => {
   }
 });
 
-// SELECT 
-// recipe.api_id, recipe.image, recipe.name 
+// SELECT
+// recipe.api_id, recipe.image, recipe.name
 
 router.get('/:id', async (req, res) => {
   try {
     const recipeBoxData = await Recipe.findbyPK({
-      include: [ Unit, RecipeIngredient, Pantry ]
-      // where: { 
+      include: [Unit, RecipeIngredient, Pantry],
+      // where: {
       //   user_id: req.session.user_id,
       // }
     });
@@ -58,7 +78,9 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!recipeData) {
-      res.status(404).json({ message: `No recipe found with id ${req.params.id} for user ${req.session.user.id} !` });
+      res.status(404).json({
+        message: `No recipe found with id ${req.params.id} for user ${req.session.user.id} !`,
+      });
       return;
     }
 
