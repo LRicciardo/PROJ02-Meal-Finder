@@ -1,38 +1,33 @@
-var userInput = $('#user-form');
-var submitButton = $('#form-submit');
+// var userInput = $('#user-form');
+// var submitButton = $('#form-submit');
 var cardContainerEl = $('#cards');
 var favButton = $('.favorite');
 var favSection = $('#favorites-section');
 var searchInputEl = $('#search-input');
 var favArray = [];
 
-const inputErrorModalEl = document.getElementById('input-error-modal');
-const inputNoRecipesModalEl = document.getElementById('input-no-recipes-modal');
-const dataNotFoundModalEl = document.getElementById('data-not-found-modal');
-const cannotConnectModalEl = document.getElementById('cannot-connect-modal');
-let currentSearch = '';
 
 // An array of different apiKeys that will work in the fetch api call in the getSpoonApi function
-var arrApiKeys = [
-  'c39f000be15b48f0b51fc4215771d97b',
-  'ad6278e15c864117bf13998d6f2409e0',
-  'd4e89512419b4ecfae9d762561d78c97',
-  '2cb1ecb32f4e4eb9a46acc15da086c22',
-  'abed78e3630b46feafb9672300be48cc',
-  'fe6c2d84686842f9af715566ad95611d',
-  'd47220e0ade34b3ea9c039613858c695',
-];
+// var arrApiKeys = [
+//   'c39f000be15b48f0b51fc4215771d97b',
+//   'ad6278e15c864117bf13998d6f2409e0',
+//   'd4e89512419b4ecfae9d762561d78c97',
+//   '2cb1ecb32f4e4eb9a46acc15da086c22',
+//   'abed78e3630b46feafb9672300be48cc',
+//   'fe6c2d84686842f9af715566ad95611d',
+//   'd47220e0ade34b3ea9c039613858c695',
+// ];
 
-var getSpoonApi = function (event) {
-  event.preventDefault();
+// var getSpoonApi = function (event) {
+//   event.preventDefault();
 
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '35f49090e6msha1612b0ea8a9d7fp14fe6djsn164414318e8d',
-      'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-    },
-  };
+//   const options = {
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Key': '35f49090e6msha1612b0ea8a9d7fp14fe6djsn164414318e8d',
+//       'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+//     },
+//   };
 
   // Converts the user's input into a value the apiUrl will be able to read
 
@@ -41,7 +36,7 @@ var getSpoonApi = function (event) {
   // currentSearch = input.toUpperCase();
 
   // if (input === undefined || input === '') {
-  //   inputErrorModalEl.classList.add('is-active');
+  //   $('#error-modal').add('is-active');
   //   return;
   // }
 
@@ -75,15 +70,20 @@ var getSpoonApi = function (event) {
   //   dietParameter +
   //   '&apiKey=' +
   //   randomKey(arrApiKeys);
-
-  var apiUrl = `/api/recipe/getRecipeData?query=${searchInputEl.val()}`;
-
+  let queryInput = searchInputEl.val()
+  console.log(queryInput)
+  if (queryInput.length < 3) {
+    queryInput = 'chicken'
+  }
+ 
+  var apiUrl = `/api/recipe/getRecipeData?query=${queryInput}`;
+console.log(apiUrl)
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
           if (data.results.length === 0) {
-            inputNoRecipesModalEl.classList.add('is-active');
+            $('#no-recipes-modal').add('is-active');
             $('#search-input').val('');
             return;
           }
@@ -91,15 +91,13 @@ var getSpoonApi = function (event) {
           displayRecipeCards(data);
         });
       } else {
-        dataNotFoundModalEl.classList.add('is-active');
+        $('#data-not-found-modal').add('is-active')
         return;
       }
     })
     .catch(function (error) {
-      cannotConnectModalEl.classList.add('is-active');
-      return;
+      $('#cannot-connect-modal').add('is-active');
     });
-};
 
 // this function needs to have response from the API call as a parameter
 var displayRecipeCards = function (data) {
@@ -129,9 +127,9 @@ var displayRecipeCards = function (data) {
   );
   cardContainerEl.append(recipeContainerEl);
 
-  function randomKey(arrApiKeys) {
-    return arrApiKeys[Math.floor(Math.random() * arrApiKeys.length)];
-  }
+  // function randomKey(arrApiKeys) {
+  //   return arrApiKeys[Math.floor(Math.random() * arrApiKeys.length)];
+  // }
 
   // for loop to create cards
   for (i = 0; i < 5; i++) {
@@ -365,5 +363,5 @@ $('#data-not-found-modal-bg, #data-not-found-modal-close-btn')
 $('#cannot-connect-modal-bg, #cannot-connect-modal-close-btn')
   .on('click', () => $('#cannot-connect-modal').remove('is-active'));
 
-userInput.on('submit', getSpoonApi);
+// userInput.on('submit', getSpoonApi);
 $(favButton).on('click', favButton);

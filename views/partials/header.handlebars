@@ -1,37 +1,25 @@
-<nav class='navbar' role='navigation' aria-label='main navigation'>
-  <div class='navbar-brand'>
-    <a class='navbar-item' id='headerImage' href=''>
-      <img src='../../assets/images/RecipeBox.jpg' width='112' height='28' />
-    </a>
+<section class='hero'>
+  <div class='columns'>
+    <div class='column is-1'>
+      <a><img src='../../image/RecipeBox.jpg' width='250' /></a>
+    </div>
+    <div class='column has-text-centered'>
+      <p class='title is-centered'>
+        Recipe Finder
+      </p>
+      <p class='subtitle'>
+        Recipe Box for your Favorite Recipes
+      </p>
+    </div>
 
-    <h1 class='title'>Recipe Finder</h1>
-
-    <a
-      role='button'
-      class='navbar-burger burger'
-      aria-label='menu'
-      aria-expanded='false'
-      data-target='navbarBasicExpand'
-    >
-      <span aria-hidden='true'></span>
-      <span aria-hidden='true'></span>
-      <span aria-hidden='true'></span>
-    </a>
-  </div>
-
-  <div id='navbarBasicExpand' class='navbar-menu'>
-    <div class='navbar-start'>
-      <div class='navbar-item has-dropdown is-hoverable'>
-        <div class='navbar-dropdown'>
-          {{#if logged_in}}
-            {{!-- <a class='navbar-item' href='/homepage'>home</a>
-            | --}}
-            <a class='button' id='logout' href='/logout'>logout</a>
-          {{else}}
-            <a href='/login'>login</a>
-          {{/if}}
-        </div>
-      </div>
+    <div class='is-right'>
+      {{#if logged_in}}
+        {{! <a class='navbar-item' href='/homepage'>home</a>
+            | }}
+        <a class='button' id='logout' href='/logout'>logout</a>
+      {{else}}
+        <a href='/login'>login</a>
+      {{/if}}
     </div>
   </div>
-</nav>
+</section>
