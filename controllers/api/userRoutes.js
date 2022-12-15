@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     console.log("inside userRoute post / ");
     const userData = await User.create({
-      name: req.body.username,
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
     });
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/users/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     console.log("inside userRoute post /users/login ");
     const userData = await User.findOne({ where: { email: req.body.email } });

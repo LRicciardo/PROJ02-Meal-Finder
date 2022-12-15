@@ -19,6 +19,11 @@ Recipe.init(
       allowNull: false,
       validate: { notNull: true }
     },
+    instructions: {
+      type: DataTypes.STRING(2000),
+      allowNull: false,
+      validate: { notNull: true }
+    },
     image: {
       type: DataTypes.STRING,
       allowNull: false,
