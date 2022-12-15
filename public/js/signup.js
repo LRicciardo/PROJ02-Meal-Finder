@@ -1,5 +1,5 @@
 const signupFormHandler = async (event) => {
-  debugger;
+  // debugger;
   //  prevent page from loading
   event.preventDefault();
 

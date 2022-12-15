@@ -1,5 +1,5 @@
 const loginFormHandler = async (event) => {
-  debugger
+  // debugger
   //  prevent page from loading
   event.preventDefault();
 
