@@ -31,9 +31,9 @@ var favArray = [];
 
   // Converts the user's input into a value the apiUrl will be able to read
 
-  // var userText = document.querySelector('.input');
-  // var input = userText.value.trim();
-  // currentSearch = input.toUpperCase();
+  var userText = document.querySelector('.input');
+  var input = userText.value.trim();
+  currentSearch = input.toUpperCase();
 
   // if (input === undefined || input === '') {
   //   $('#error-modal').add('is-active');
@@ -70,7 +70,7 @@ var favArray = [];
   //   dietParameter +
   //   '&apiKey=' +
   //   randomKey(arrApiKeys);
-  let queryInput = searchInputEl.val()
+  queryInput = searchInputEl.val();
   console.log(queryInput)
   if (queryInput.length < 3) {
     queryInput = 'chicken'

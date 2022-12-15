@@ -25,8 +25,10 @@ router.get('/getRecipeData', async (req, res) => {
       ];
     return arrApiKeys[Math.floor(Math.random() * arrApiKeys.length)];
   } 
+    // const apiData = await axios.get(
+    //   `https://api.spoonacular.com/recipes/complexSearch?query=${req.query.query}&number=5&addRecipeInformation=true&apiKey=${randomApiKey}`
     const apiData = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?query=${req.query.query}&number=5&addRecipeInformation=true&apiKey=${randomApiKey}`
+      `https://api.spoonacular.com/recipes/complexSearch?query=${req.query.query}&number=5&addRecipeInformation=true&apiKey=${process.env.API_KEY1}`
     );
     return res.status(200).json(apiData.data);
     console.log('data', apiData.data);
