@@ -352,45 +352,18 @@ for (i = 0; i < favArray.length; i++) {
 var saveRecipes = function () {
   localStorage.setItem('recipes', JSON.stringify(favArray));
 };
-var closeInputModal = function () {
-  inputErrorModalEl.classList.remove('is-active');
-};
 
-var noData = function () {
-  inputNoRecipesModalEl.classList.remove('is-active');
-};
+$('#error-modal-bg, #error-modal-close-btn')
+  .on('click', () => $('#error-modal').remove('is-active'));
 
-var closeDataModal = function () {
-  dataNotFoundModalEl.classList.remove('is-active');
-};
+$('#no-recipes-modal-bg, #no-recipes-modal-close-btn')
+  .on('click', () => $('#no-recipes-modal').remove('is-active'));
 
-var closeApiModal = function () {
-  cannotConnectModalEl.classList.remove('is-active');
-};
+$('#data-not-found-modal-bg, #data-not-found-modal-close-btn')
+  .on('click', () => $('#data-not-found-modal').remove('is-active'));
 
-// document
-//   .querySelector('#input-modal-close-btn')
-//   .addEventListener('click', closeInputModal);
-// document
-//   .querySelector('#input-modal-close-btn-2')
-//   .addEventListener('click', noData);
-// document
-//   .querySelector('#input-modal-bg')
-//   .addEventListener('click', closeInputModal);
-
-// document
-//   .querySelector('#data-modal-bg')
-//   .addEventListener('click', closeDataModal);
-// document
-//   .querySelector('#data-modal-close-btn')
-//   .addEventListener('click', closeDataModal);
-
-// document
-//   .querySelector('#cannot-connect-bg')
-//   .addEventListener('click', closeApiModal);
-// document
-//   .querySelector('#cannot-connect-close-btn')
-//   .addEventListener('click', closeApiModal);
+$('#cannot-connect-modal-bg, #cannot-connect-modal-close-btn')
+  .on('click', () => $('#cannot-connect-modal').remove('is-active'));
 
 userInput.on('submit', getSpoonApi);
 $(favButton).on('click', favButton);
