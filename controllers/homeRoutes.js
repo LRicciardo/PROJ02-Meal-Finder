@@ -1,15 +1,14 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../models');
 const withAuth = require('../utils/auth');
-
 //   using withAuth as Middleware, when withAuth completes it continue (next()), to the function
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const recipeData = await Recipe.findAll({
       include: [
         {
-          model: users,
-        }
+          model: User,
+        },
       ],
       attributes: { exclude: ['password'] },
       order: [['name', 'ASC']],
@@ -23,6 +22,7 @@ router.get('/', withAuth, async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log('err', err);
     res.status(500).json(err);
   }
 });
