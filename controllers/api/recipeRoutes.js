@@ -11,8 +11,22 @@ require('dotenv').config();
 
 router.get('/getRecipeData', async (req, res) => {
   try {
+    // Chooses an apiKey at random from the arrApiKeys to be used in the fetch api call
+
+  const randomApiKey = () => {
+        let arrApiKeys = [
+      process.env.API_KEY1,
+      process.env.API_KEY2,
+      process.env.API_KEY3,
+      process.env.API_KEY4,
+      process.env.API_KEY5,
+      process.env.API_KEY6,
+      process.env.API_KEY7
+      ];
+    return arrApiKeys[Math.floor(Math.random() * arrApiKeys.length)];
+  } 
     const apiData = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?query=${req.query.query}&number=5&addRecipeInformation=true&apiKey=${process.env.API_KEY}`
+      `https://api.spoonacular.com/recipes/complexSearch?query=${req.query.query}&number=5&addRecipeInformation=true&apiKey=${randomApiKey}`
     );
     return res.status(200).json(apiData.data);
     console.log('data', apiData.data);
@@ -43,10 +57,11 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const recipeBoxData = await Recipe.findbyPK({
-      include: [Unit, RecipeIngredient, Pantry],
-      // where: {
-      //   user_id: req.session.user_id,
-      // }
+      include: [User],
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      }
     });
 
     res.status(200).json(recipeBoxData);
